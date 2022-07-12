@@ -18,8 +18,8 @@ def user(name, id):
     return 'User page: ' + name + ' - ' + str(id)
 
 
-@app.route('/homework/<day>/<data>')
-def homework(day, data):
+@app.route('/homework')
+def homework():
     return render_template('home_page.html')
 
 
