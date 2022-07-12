@@ -12,6 +12,7 @@ class Article(db.Model):
     intro = db.Column(db.String(300), nullabel=False)
     text = db.Column(db.Text, nullabel=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __repr__(self):
         return '<Article %r' %self.id
