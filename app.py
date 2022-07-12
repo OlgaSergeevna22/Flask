@@ -15,11 +15,12 @@ def about():
 
 @app.route('/user/<string:name>/<int:id>')
 def user(name, id):
-    return 'User page' + name + '-' + id
+    return 'User page: ' + name + ' - ' + str(id)
 
-@app.route('/homework')
-def homework():
-    return 'My homework'
+
+@app.route('/homework/<day>/<data>')
+def homework(day, data):
+    return 'My homework:' + day + ' - ' + data
 
 
 if __name__ == '__main__':
