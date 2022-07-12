@@ -17,6 +17,10 @@ def about():
 def user(name, id):
     return 'User page' + name + '-' + id
 
+@app.route('/homework')
+def homework():
+    return 'My homework'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
