@@ -20,7 +20,7 @@ def user(name, id):
 
 @app.route('/homework/<day>/<data>')
 def homework(day, data):
-    return 'My homework:' + day + ' - ' + data
+    return render_template('home_page.html')
 
 
 if __name__ == '__main__':
