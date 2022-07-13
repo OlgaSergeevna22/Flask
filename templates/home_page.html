@@ -1,7 +1,8 @@
 <style>
 .button {
     background-color: LightSteelBlue;
-    border-radius: 12px;
+    border: 2px solid MidnightBlue;
+    border-radius: 8px;
     color: DarkRed;
     padding: 16px 40p;
     text-align: center;
@@ -16,7 +17,6 @@
 }
 
 
-
 </style>
 {%extends 'base.html'%}
 
@@ -26,15 +26,15 @@
 
 {%block body%}
 <div class="container">
-<h1>Домашние задания статьи</h1>
-{%for el in articles%}
+    <h1>Домашние задания статьи</h1>
+    {%for el in articles%}
     <div class="alert alert-info">
         <p><b>Дата создания статьи: {{el.date.date()}}</b></p>
         <p><b>Время: {{el.updated.time().replace(microsecond=0)}}</b></p>
         <h2>{{el.title}}</h2>
         <h5>{{el.intro}}</h5>
         <p>{{el.text}}</p>
-        <button class="button" >Читать всё...</button>
+        <a href="/posts/{{el.id}}" class="button">Читать всё...</a>
     </div>
 
     {%endfor%}
