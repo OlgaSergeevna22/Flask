@@ -8,6 +8,14 @@
 <div class="container">
     <h1>Все статьи</h1>
     {%for el in articles%}
+    <div class="alert alert-info">
+        <p><b>Дата создания статьи: {{el.date.date()}}</b></p>
+        <p><b>Время: {{el.updated.time().replace(microsecond=0)}}</b></p>
+        <h2>{{el.title}}</h2>
+        <h5>{{el.intro}}</h5>
+        <p>{{el.text}}</p>
+        <button class="btn btn.warning">Читать всё...</button>
+    </div>
 
     {%endfor%}
 </div>

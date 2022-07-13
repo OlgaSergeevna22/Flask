@@ -1,3 +1,23 @@
+<style>
+.button {
+    background-color: LightSteelBlue;
+    border-radius: 12px;
+    color: DarkRed;
+    padding: 16px 40p;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button:hover {background-color:MediumSlateBlue;
+               box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+</style>
 {%extends 'base.html'%}
 
 {%block title%}
@@ -7,6 +27,16 @@
 {%block body%}
 <div class="container">
 <h1>Домашние задания статьи</h1>
+{%for el in articles%}
+    <div class="alert alert-info">
+        <p><b>Дата создания статьи: {{el.date.date()}}</b></p>
+        <p><b>Время: {{el.updated.time().replace(microsecond=0)}}</b></p>
+        <h2>{{el.title}}</h2>
+        <h5>{{el.intro}}</h5>
+        <p>{{el.text}}</p>
+        <button class="button" >Читать всё...</button>
+    </div>
 
+    {%endfor%}
 </div>
 {%endblock%}

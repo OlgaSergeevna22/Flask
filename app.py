@@ -13,8 +13,8 @@ class Article(db.Model):
     title = db.Column(db.String(100), nullable=False)
     intro = db.Column(db.String(300), nullable=False)
     text = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    date = db.Column(db.DateTime, default=datetime.now)
+    updated = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     def __repr__(self):
         return '<Article %r' % self.id
@@ -47,7 +47,7 @@ def create_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/')
+            return redirect('/posts')
         except:
             return 'Произошла ошибка'
     else:
@@ -56,7 +56,9 @@ def create_article():
 
 @app.route('/homework')
 def homework():
-    return render_template('home_page.html')
+    articls = Article.query.order_by(Article.date).all()
+    return render_template('home_page.html', articles=articls)
+
 
 
 if __name__ == '__main__':
