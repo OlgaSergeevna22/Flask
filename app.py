@@ -70,6 +70,25 @@ def create_article():
     else:
         return render_template('create-article.html')
 
+@app.route('/posts/<int:id>/update', methods=['POST', 'GET'])
+def posts_update(id):
+    if request.method == 'POST':
+        title = request.form['title']
+        intro = request.form['intro']
+        text = request.form['text']
+
+        article = Article(title=title, intro=intro, text=text)
+
+        try:
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/posts')
+        except:
+            return 'Произошла ошибка при редактировании'
+    else:
+        article = Article.query.get(id)
+        return render_template('posts-update.html', article=article)
+
 
 @app.route('/homework')
 def homework():

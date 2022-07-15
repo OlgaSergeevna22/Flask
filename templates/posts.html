@@ -10,7 +10,7 @@
     {%for el in articles%}
     <div class="alert alert-info">
         <p><b>Дата создания статьи: {{el.date.date()}}</b></p>
-        <p><b>Время: {{el.updated.time().replace(microsecond=0)}}</b></p>
+        <p><b>Время: {{el.updated.date()}}</b></p>
         <h2>{{el.title}}</h2>
         <h5>{{el.intro}}</h5>
         <p>{{el.text}}</p>
