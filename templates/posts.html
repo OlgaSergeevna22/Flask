@@ -7,17 +7,20 @@
 {%block body%}
 <div class="container">
     <h1>Все статьи</h1>
+    {%if articles|length>0 %}
     {%for el in articles%}
     <div class="alert alert-info">
-        <p><b>Дата создания статьи: {{el.date.date()}}</b></p>
-        <p><b>Время: {{el.updated.date()}}</b></p>
+        <p><b>Создано: {{el.date.date()}}</b></p>
+        <p><b>Изменено: {{el.updated.date()}}</b></p>
         <h2>{{el.title}}</h2>
         <h5>{{el.intro}}</h5>
         <p>{{el.text}}</p>
-
     </div>
 <a href="/posts/{{el.id}}" class="btn btn.warning" style=" border: 1px solid MidnightBlue " >Читать всё...</a>
     {%endfor%}
+    {%else%}
+    <p>Статей на сайте нет</p>
+    {%endif%}
 </div>
 
 {%endblock%}
